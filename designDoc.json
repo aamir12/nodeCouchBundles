@@ -1,0 +1,29 @@
+{
+  "_id": "_design/byAdmin",
+  "_rev": "12-3513ab12f2a9246ccaae3c75d4d208bf",
+  "views": {
+    "getAvailableId": {
+      "reduce": "function(keys, values){ \nreturn Math.max.apply(Math,values);\n}",
+      "map": "function(doc) {\n{emit(null,parseInt(doc._id,36))};\n}"
+    },
+    "allEmailDoc": {
+      "map": "function (doc) {\n  if(doc.email){\n    emit(null, doc);\n  }  \n}"
+    },
+    "withDocuments": {
+      "map": "function (doc) {\n  if(doc.documents){\n   emit(null, doc);\n  }  \n}"
+    },
+    "withPhotoName": {
+      "map": "function (doc) {\n  if(doc.photoName)\n  emit(null, doc);\n}"
+    },
+    "downloadDoc": {
+      "map": "function (doc) {\n  doc.documents.forEach(function(x){\n    emit([doc._id,x], x);\n  })  \n}"
+    },
+    "byAttachment": {
+      "map": "function (doc) {\n  if(doc._attachments){\n     emit(null, doc);\n  }\n}"
+    },
+    "base64Image": {
+      "map": "function (doc) {\n  if(doc.base64Image){\n    emit(null, doc);\n  }\n}"
+    }
+  },
+  "language": "javascript"
+}
