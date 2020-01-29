@@ -1,0 +1,45 @@
+{
+    "couchdb"                                        : "http://admin:admin@127.0.0.1:5984",
+    "cradle"                                         : "https://172.28.49.0",
+    "dbUrl"                                          : "http://127.0.0.1:5984",
+    "cradle_port"                                    : "6984",
+    "host"                                           : "172.28.49.0:6984",
+    "auth"                                           : "nodejs:nodejs",
+    "main_server_url"                                : "https://172.28.73.115:3030",
+    "graphics_url"                                   : "https://examineer.org/potato/graphics",
+    "req_url"                                        : "http://172.28.49.0:9999",
+    "quiz_url"                                       : "http://127.0.0.1:8080/#/login?user=",
+    "httpFlag"                                       : true,
+    "secureFlag"                                     : false,
+    "chart_url"                                      : "https://examineer.org/potato/charts",
+    "ytvideo_url"                                    : "https://examineer.org/potato/ytvideo",    
+    "plotIframeLink"                                 : "http://127.0.0.1:3030/plotchart/load.html?source=examineer.org/potato/charts/",
+    "emailServer": {
+        "apiKey": "key-f955f2744525ff5a11c9dc50e1dc2cd8",
+        "domain": "mail.examineer.org",
+        "from": "Examineer.org <noreply@examineer.org>",
+        "authToken": "123",
+        "meta": {
+            "support_email": "sjain@iiserb.ac.in",
+            "footer_line": " Do not reply to this email. For quiz related issues contact your quiz master/instructor. For technical issues, inform us at sjain@iiserb.ac.in.",
+            "copyright": "Copyright ©&nbsp; Examineer.in ,2019, All rights reserved."
+        }
+    },
+    "gmailSMTP":{
+        "email":"aakhan8878@gmail.com",
+        "password":"Khanaamir@510638",
+        "from":"<aakhan8878@gmail.com>"
+    },
+    "domainMail":{
+      "email":"support@codexking.com",
+      "password" : "Support@8878",
+      "host":"mail.codexking.com",
+      "port":587,
+      "secure":false,
+      "from":"<support@codexking.com>"
+    },
+    "socketUrl": "127.0.0.1:3060",
+    "liveQuizSocketUrl": "127.0.0.1:3090",
+    "PORT":3040,
+    "SESSION_KEY" : "vEhB27NtadL3mfIsyCDu"
+}

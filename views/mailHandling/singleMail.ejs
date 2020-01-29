@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/theme/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    <%-examineerTitle%>
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="/theme/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <link rel="stylesheet" href="/admin/css/admin.css">
+  <script src="/ckeditor/ckeditor.js"></script>
+</head>
+
+<body class="" ng-app="app" ng-controller="fileController" ng-init="initData('<%= JSON.stringify(data) %>')">
+  <div id="fullPageLoader"></div>
+  <div class="wrapper" id="wrapperBody">
+        <div class="sidebar" data-color="purple" data-background-color="black" data-image="/theme/img/sidebar-1.jpg">
+            <!--
+            Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+            Tip 2: you can also add an image using data-image tag
+            -->
+              <%- include('../parts/sidebar'); %>
+        </div>
+    <div class="main-panel">
+      <%- include('../parts/topNavbar'); %>
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <form id="singleMailFrm" class="form-horizontal" action="" method="">
+                <div class="card ">
+                  <div class="card-header card-header-rose card-header-text">
+                    <div class="card-text">
+                      <h4 class="card-title">Single Mail <small>(By Domain Mail)</small></h4>
+                    </div>
+                  </div>
+                  <div class="card-body ">
+                   
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Email</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                          <input class="form-control" value="aamirkhan8878@gmail.com" type="text" name="email" email="true" required="true" />
+                        </div>
+                      </div>
+                      
+                    </div>
+                   
+                  </div>
+                  <div class="card-footer ml-auto mr-auto">
+                    <button type="submit" id="submitbutton" class="btn btn-rose">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>          
+          </div> 
+          
+          
+          <div class="row">
+            <div class="col-md-12">
+              <form id="multiSubmit" class="form-horizontal" action="" method="">
+                <div class="card ">
+                  <div class="card-header card-header-rose card-header-text">
+                    <div class="card-text">
+                      <h4 class="card-title">Multi mail with same message <small>(By Domain Mail)</small></h4>
+                    </div>
+                  </div>
+                  <div class="card-body ">
+                   
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Emails</label>
+                      <div class="col-sm-7">
+                        <div class="form-group ad_tagInput">
+                          <input type="text" name="emails" required="true" value="aamirkhan8878@gmail.com,webregister88@gmail.com" class="form-control tagsinput" data-role="tagsinput" data-color="info">
+                         
+                        </div>
+                      </div>
+                      
+                    </div>
+                   
+                  </div>
+                  <div class="card-footer ml-auto mr-auto">
+                    <button type="submit" id="multiSubBtn" class="btn btn-rose">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>          
+          </div>
+          
+          
+          <div class="row">
+            <div class="col-md-12">
+              <form id="GmailSubmitFrm" class="form-horizontal" action="" method="">
+                <div class="card ">
+                  <div class="card-header card-header-rose card-header-text">
+                    <div class="card-text">
+                      <h4 class="card-title">Mail with  Gmail SMTP </h4>
+                    </div>
+                  </div>
+                  <div class="card-body ">
+                   
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Email</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                          <input type="text" value="aamirkhan8878@gmail.com" name="email" required="true" email="true" class="form-control">
+                          
+                        </div>
+                      </div>
+                      
+                    </div>
+                   
+                  </div>
+                  <div class="card-footer ml-auto mr-auto">
+                    <button type="submit" id="GSubBtn" class="btn btn-rose">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>          
+          </div>  
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <form id="mailGunFrm"  class="form-horizontal" action="" method="">
+                <div class="card ">
+                  <div class="card-header card-header-rose card-header-text">
+                    <div class="card-text">
+                      <h4 class="card-title">Multi Mail with templating <small>(By Mail Gun)</small>
+                      </h4>
+                    </div>
+                  </div>
+                  <div class="card-body ">
+                   
+                    <!-- <div class="row" style="display:none;">
+                      <label class="col-sm-2 col-form-label">Emails</label>
+                      <div class="col-sm-7">
+                        <div class="form-group ad_tagInput">
+                          <input type="text" id="emailids" name="emails" required="true"  class="form-control tagsinput" data-role="tagsinput" data-color="info">
+                        </div>
+                      </div>                      
+                    </div> -->
+
+
+                    <div class="row">
+                      <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <button type="button" class="btn btn-sm btn-default" ng-click="setDataToCk('{name}')">{name}</button>
+
+                        <button type="button" class="btn btn-sm btn-default" ng-click="setDataToCk('{email}')">{email}</button>
+
+                        <button type="button" class="btn btn-sm btn-default" ng-click="setDataToCk('{phone}')">{phone}</button>
+                        
+
+                      </div>
+                    </div> 
+
+
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Message</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                          <textarea name="message" id="message" rows="10" cols="80">
+                              <p>Hello Dear&nbsp;{name},<br />
+                                Your application is in pending mode. Please verify you email&nbsp;{email} and phone number&nbsp;{phone} .</p>
+                                
+                                <p>&nbsp;</p>
+                                
+                                <p>Regards,
+                                  <br>                           
+                                Admin</p>
+                        </textarea>
+
+                        </div>
+                      </div>                      
+                    </div>
+
+
+                    <!-- <div class="row">
+                      <label class="col-sm-2 col-form-label">Attachment</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                           <button type="button" ng-click="onChangeFile()" class="btn btn-primary">Select Files</button> <strong> (png | jpeg| jpg) </strong>
+                          <input type="file" accept="image/png, image/jpeg,image/png" name="mailGunFile" multiple id="mailGunFile">     
+                        </div>                   
+                      </div>
+                    </div> -->
+
+
+                   
+                  </div>
+                  <div class="card-footer ml-auto mr-auto">
+                    <button type="button" ng-click="onMailGunFrmSubmit()" id="mailGunBtn" class="btn btn-rose">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>          
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <form id="mailAttFrm" class="form-horizontal ad_frm" name="mailAttFrm"  ng-submit="onSubmitMailAtt(mailAttFrm)" ng-validate="validationOptions" enctype="multipart/form-data"  method="post">
+                <div class="card ">
+                  <div class="card-header card-header-rose card-header-text">
+                    <div class="card-text">
+                      <h4 class="card-title">Mail with  Attachment <small>(Single | Multiple attachment) </small></h4>
+                    </div>
+                  </div>
+                  <div class="card-body ">
+                   
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Email</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                          <input type="text" name="email" value="aamirkhan8878@gmail.com" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Attachment</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                           <button type="button" ng-click="onChangeFile()" class="btn btn-primary">Select Files</button> <strong> (png | jpeg| jpg) </strong>
+                          <input type="file" accept="image/png, image/jpeg,image/png" name="mailAttchFile" multiple id="file">     
+                        </div>                   
+                      </div>
+                    </div>
+                   
+                  </div>
+                  <div class="card-footer ml-auto mr-auto">
+                    <button type="submit" id="attBtn" class="btn btn-rose">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>          
+          </div>
+
+
+        </div>
+      </div>
+
+      <%- include('../parts/footer'); %>
+    </div>
+  </div>
+
+
+
+
+
+
+  
+  <%- include('../parts/alljs'); %>
+
+<script>  
+  CKEDITOR.replace( 'message', { customConfig: '/ckeditor/customconfig1.js' } );
+</script>
+
+
+  <script src="/admin/js/admin_mail.js"></script>
+  <script src="/angularControllers/angular-validate.min.js"></script>
+  <script src="/angularControllers/manageMailCont.js"></script>
+  <script src="/angularControllers/ngCommon.js"></script>
+</body>
+
+</html>

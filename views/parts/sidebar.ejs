@@ -1,0 +1,96 @@
+<div class="logo">
+  <a href="/dashboard" class="simple-text logo-mini">
+    EX
+  </a>
+  <a href="/dashboard" class="simple-text logo-normal">
+    Examineer
+  </a>
+</div>
+<div class="sidebar-wrapper">
+
+  <ul class="nav">
+    <li class="nav-item <%- (['Dashboard'].indexOf(currPageTitle)>-1 )?'active':''; %> ">
+      <a class="nav-link" href="/dashboard">
+        <i class="material-icons">dashboard</i>
+        <p> Dashboard </p>
+      </a>
+    </li>
+
+    <li class="nav-item <%- (['Manage Account Request'].indexOf(currPageTitle)>-1 )?'active':''; %>">
+      <a class="nav-link" href="/request">
+        <i class="material-icons">person</i>
+        <p> Request </p>
+      </a>
+    </li>
+
+  
+
+
+
+    <li class="nav-item <%- (['Multer Single File','Multer Multiple File','Multiple File DB','Dropzone'].indexOf(currPageTitle)>-1 )?'active':''; %>">
+      <a class="nav-link" data-toggle="collapse" href="#pagesFileHandling">
+        <i class="material-icons">image</i>
+        <p> File Upload
+          <b class="caret"></b>
+        </p>
+      </a>
+      <div class="collapse" id="pagesFileHandling">
+        <ul class="nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="/fileupload/multersingle">
+              <span class="sidebar-mini"> MSF </span>
+              <span class="sidebar-normal"> Multer Single File </span>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/fileupload/multermulti">
+              <span class="sidebar-mini"> MMF </span>
+              <span class="sidebar-normal"> Multer Multiple File </span>
+            </a>
+          </li>
+
+        
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/fileupload/dropzone">
+              <span class="sidebar-mini"> DZ </span>
+              <span class="sidebar-normal"> Dropzone </span>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/fileupload/base64">
+              <span class="sidebar-mini"> B64 </span>
+              <span class="sidebar-normal"> Base64 </span>
+            </a>
+          </li>
+
+
+        </ul>
+      </div>
+    </li>
+
+
+    <li class="nav-item <%- (['Mail Management'].indexOf(currPageTitle)>-1 )?'active':''; %>">
+      <a class="nav-link" data-toggle="collapse" href="#pagesMailHandling">
+        <i class="material-icons">image</i>
+        <p> Mail
+          <b class="caret"></b>
+        </p>
+      </a>
+      <div class="collapse" id="pagesMailHandling">
+        <ul class="nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="/mailsend/mailManage">
+              <span class="sidebar-mini"> SM </span>
+              <span class="sidebar-normal">  Mail Managment </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    
+  </ul>
+</div>
