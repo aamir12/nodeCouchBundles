@@ -1,5 +1,5 @@
 
-var app = angular.module('app', ['ngValidate']);
+var app = angular.module('app', ['ngValidate','uiCropper']);
 app.controller('fileupload4Cont',function($scope,$http,$timeout){
   
     $scope.initData = function(students,docUrl){    
@@ -63,6 +63,8 @@ app.controller('fileupload4Cont',function($scope,$http,$timeout){
             }
            )
             .then(function(dataRes){
+                //console.log(dataRes);
+
                 location.reload();
 
             }, function(errorRes){
@@ -76,50 +78,12 @@ app.controller('fileupload4Cont',function($scope,$http,$timeout){
     }
     
     
-    let fileInput = document.getElementById('base64file');
-    var handleFileSelect = function(evt) {
-        //////////////
-        var Inputfiles = evt.target.files;
-        if (Inputfiles && Inputfiles[0]) {
-            let file = Inputfiles[0];
-            //console.log(file);
-            let tempArray = file.name.split('.');
-            let extension = tempArray[tempArray.length-1].toLowerCase();
-            let allowExtension = ['png','jpeg','jpg'];
-            if(allowExtension.includes(extension)){
-                var reader = new FileReader();      
-                reader.onload = function(e) {          
-                    var binaryString = e.target.result;
-                    let imgUrl = "data:image/*;base64,"+btoa(binaryString);
-                    $('#preViewImg').attr('src', imgUrl);
-                    $('#browseBtn').hide();
-                    $('#canBrowseBtn').show();
-                    document.getElementById("base64Image").value = btoa(binaryString);
-                    //console.log($( "#preViewImg" ).next('.error'))
-                    
-                
-                }
-                //reader.readAsDataURL(file);  
-                reader.readAsBinaryString(file);        
-            }else{
-                evt.target.value = '';
-                $('#preViewImg').attr('src','/theme/img/image_placeholder.jpg');
-                alert("Please select valid image file only");
-            }
-        
-        }
-    };
+   
 
-    if(fileInput){
-        if (window.File && window.FileReader && window.FileList && window.Blob) {
-            fileInput.addEventListener('change',handleFileSelect,false); 
-        } else {
-             alert('The File APIs are not fully supported in this browser.');
-        }
-    }
 
     // ----------------------------------------to generate base64 and ctype ------------------------------------
    
+    $scope.imgPreview = '/theme/img/image_placeholder.jpg';
     $scope.onRemovePhoto = function(){
         $('#preViewImg').attr('src','/theme/img/image_placeholder.jpg');
         fileInput.value='';
@@ -137,5 +101,48 @@ app.controller('fileupload4Cont',function($scope,$http,$timeout){
         //     console.log(errorRes);
         // });
     }
+
+    $scope.myImage = '';
+    $scope.myCroppedImage = '';
+
+    let fileInput = document.getElementById('base64file');
+    var handleFileSelect = function (evt) {
+        var Inputfiles = evt.target.files;
+        if (Inputfiles && Inputfiles[0]) {
+            let file = Inputfiles[0];            
+            let tempArray = file.name.split('.');
+            let extension = tempArray[tempArray.length-1].toLowerCase();
+            let allowExtension = ['png','jpeg','jpg'];
+            if(allowExtension.includes(extension)){
+                var reader = new FileReader();      
+                reader.onload = function(e) {          
+                    $scope.$apply(function ($scope) {
+                        $scope.myImage = e.target.result;
+                    });
+                }
+                reader.readAsDataURL(file);  
+                //reader.readAsBinaryString(file);        
+            }else{
+                evt.target.value = '';
+                $('#preViewImg').attr('src','/theme/img/image_placeholder.jpg');
+                alert("Please select valid image file only");
+            }        
+        }
+    };
+
+    if(fileInput){
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            fileInput.addEventListener('change',handleFileSelect,false); 
+        } else {
+             alert('The File APIs are not fully supported in this browser.');
+        }
+    }
+
+    $scope.saveLogo = function(){
+        $("#imgMdl").modal('hide');
+        $('#base64Image').val($scope.myCroppedImage);
+        $scope.imgPreview = $scope.myCroppedImage;
+    }
+
 
 });

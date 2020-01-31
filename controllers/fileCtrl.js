@@ -116,6 +116,22 @@ exports.getDBDocsUrl = asyncHandler(async (req, res, next) => {
     let docname = req.params.docname;
     let filePath = path.join('tempFiles',docname);
 
+    //let fileData = await fileMdl.downloadDBDOC(id,docname);
+    //console.log(fileData);
+
+     res.setHeader("Content-Type", "application/octet-stream");
+    // res.setHeader("Content-Type", "image/png");
+    // res.setHeader("Content-Type", "application/pdf");
+    // res.setHeader("Content-Type", "application/content-stream");
+     res.setHeader("Content-Disposition", "attachment;filename='"+docname+"'");
+     //fileData.pipe(res)
+    
+     students_db.attachment.getAsStream(id,docname).pipe(res);
+    //const download = Buffer.from(fileData.toString('utf-8'),'base64');
+    // console.log(fileData.toString('utf-8'));
+    //res.end(download);
+
+
     //commonDb.createStdAttachment3(id,docname,filePath,res);
 
     //let fileData = await fileMdl.downloadDBDOC(id,docname);
@@ -164,7 +180,7 @@ exports.uploadWithBase64 = asyncHandler(async (req, res, next) => {
 exports.imageresizer = asyncHandler(async (req, res, next) => {   
     let allstudents = await fileMdl.getBase64Docs();  
     res.render('filehandling/imageresizer',{       
-        currPageTitle:'Base64',
+        currPageTitle:'Image Resizer',
         students:allstudents    
     });
 });

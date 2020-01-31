@@ -94,7 +94,7 @@ app.controller('fileupload3Cont',function($scope,$http,$timeout){
                     $('#preViewImg').attr('src', imgUrl);
                     $('#browseBtn').hide();
                     $('#canBrowseBtn').show();
-                    document.getElementById("base64Image").value = btoa(binaryString);
+                    document.getElementById("base64Image").value = imgUrl;
                     //console.log($( "#preViewImg" ).next('.error'))
                     
                 

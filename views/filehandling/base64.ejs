@@ -113,7 +113,7 @@
                               <th style="width:50px">Action</th>
                             </tr>
                             <tr ng-repeat="std in students">
-                              <td ><img class="img-responsive ad_tabImage" ng-src="data:image/*;base64,{{std.base64Image}}"></td>
+                              <td ><img class="img-responsive ad_tabImage" ng-src="{{std.base64Image}}"></td>
                               <td>{{std.name}}</td>
                               <td>
                                 <button 
