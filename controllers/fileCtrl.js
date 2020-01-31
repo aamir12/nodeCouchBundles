@@ -161,5 +161,13 @@ exports.uploadWithBase64 = asyncHandler(async (req, res, next) => {
 });
 
 
+exports.imageresizer = asyncHandler(async (req, res, next) => {   
+    let allstudents = await fileMdl.getBase64Docs();  
+    res.render('filehandling/imageresizer',{       
+        currPageTitle:'Base64',
+        students:allstudents    
+    });
+});
+
 
 

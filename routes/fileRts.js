@@ -55,6 +55,10 @@ router.post('/downloadDbDoc/:id/:docname',auth,fileCtrl.downloadDbDoc)
 
 router.get('/base64',auth,fileCtrl.getbase64)
 router.post('/uploadWithBase64',auth,fileCtrl.uploadWithBase64);
+
+router.get('/imageresizer',auth,fileCtrl.imageresizer);
+
+
 module.exports = router;
 
 //fileupload/singlefileuploadtodb
